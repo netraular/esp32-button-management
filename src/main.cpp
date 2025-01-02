@@ -2,12 +2,10 @@
 #include "config.h"
 #include "screens/ScreenManager.h"
 #include "screens/MainScreen/MainScreen.h"
-#include "screens/SecondScreen/SecondScreen.h"
 
 TFT_eSPI tft;
 ScreenManager screenManager(tft);
 MainScreen mainScreen;
-SecondScreen secondScreen;
 
 // Intervalo de tiempo para 30 FPS (en milisegundos)
 const uint32_t FRAME_INTERVAL = 1000 / 30;
@@ -24,7 +22,6 @@ void setup() {
 
     // Registrar pantallas en ScreenManager
     screenManager.addScreen("MainScreen", &mainScreen);
-    screenManager.addScreen("SecondScreen", &secondScreen);
 
     // Inicializar LVGL y cargar la pantalla principal
     screenManager.init();
