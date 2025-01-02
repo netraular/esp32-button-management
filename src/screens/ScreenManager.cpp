@@ -70,14 +70,20 @@ void ScreenManager::handleButtons() {
 
     // Verificar si al menos un botón ha cambiado
     if (change.button1Changed || change.button2Changed || change.button3Changed) {
-        // Mostrar el estado actual de los botones en el Serial Monitor
-        Serial.print("Estado de los botones: ");
-        Serial.print("B1=");
+
+        // Imprimir el estado y los cambios de los botones
+        Serial.print("State: B1=");
         Serial.print(currentState.button1Pressed ? "ON " : "OFF ");
         Serial.print("B2=");
         Serial.print(currentState.button2Pressed ? "ON " : "OFF ");
         Serial.print("B3=");
-        Serial.println(currentState.button3Pressed ? "ON" : "OFF");
+        Serial.print(currentState.button3Pressed ? "ON " : "OFF ");
+        Serial.print(" | Change: B1=");
+        Serial.print(change.button1Changed ? "YES " : "NO ");
+        Serial.print("B2=");
+        Serial.print(change.button2Changed ? "YES " : "NO ");
+        Serial.print("B3=");
+        Serial.println(change.button3Changed ? "YES" : "NO");
 
         // Notificar a la pantalla actual sobre los cambios en los botones
         if (currentScreen != nullptr) {
